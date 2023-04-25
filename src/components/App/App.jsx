@@ -2,25 +2,35 @@ import "./App.css";
 import Header from "../UI/Header";
 import { Container } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
-import {MainPage, CatalogPage, NotFoundPage, ProductPage } from "../../pages";
-
-
+import { MainPage, CatalogPage, NotFoundPage, ProductPage, SingleProduct } from "../../pages";
+import SideBar from "../UI/Sidebar";
+import { useState } from "react";
+import Layout from "../UI/Layout";
 
 function App() {
-  return (
-    <div className="App" >
-      <Header />
-      <Container maxWidth="md" sx={{mt: "20px"}}>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/product" element={<ProductPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-    
-      </Routes>
+  const [openSideBar, setOpenSideBar] = useState(false);
+  function openSidebar() {
+    setOpenSideBar(true);
+  }
+  function closeSidebar() {
+    setOpenSideBar(false);
+  }
 
-        
+  return (
+    <div className="App">
+      <Header openSidebar={openSidebar} />
+      <Container maxWidth="md" sx={{ mt: "20px" }}>
+        <Routes>
+          <Route  path="/" element={<Layout />}>
+            <Route index element={<MainPage />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/product" element={<ProductPage />} />
+            <Route path="/product/:id" element={<SingleProduct />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </Container>
+      <SideBar open={openSideBar} close={closeSidebar}  />
     </div>
   );
 }
