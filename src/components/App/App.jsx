@@ -2,7 +2,14 @@ import "./App.css";
 import Header from "../UI/Header";
 import { Container } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
-import { MainPage, CatalogPage, NotFoundPage, ProductPage, SingleProduct } from "../../pages";
+import {
+  CharacterPage,
+  CatalogPage,
+  NotFoundPage,
+  ProductPage,
+  SingleProduct,
+  SingleCharacterPage
+} from "../../pages";
 import SideBar from "../UI/Sidebar";
 import { useState } from "react";
 import Layout from "../UI/Layout";
@@ -21,8 +28,9 @@ function App() {
       <Header openSidebar={openSidebar} />
       <Container maxWidth="md" sx={{ mt: "20px" }}>
         <Routes>
-          <Route  path="/" element={<Layout />}>
-            <Route index element={<MainPage />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<CharacterPage />} />
+            <Route path="/:id" element={<SingleCharacterPage />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/product" element={<ProductPage />} />
             <Route path="/product/:id" element={<SingleProduct />} />
@@ -30,7 +38,7 @@ function App() {
           </Route>
         </Routes>
       </Container>
-      <SideBar open={openSideBar} close={closeSidebar}  />
+      <SideBar open={openSideBar} close={closeSidebar} />
     </div>
   );
 }
