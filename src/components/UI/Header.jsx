@@ -72,7 +72,7 @@ export default function Header({openSidebar}) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Вселенная Властелина Колец
           </Typography>
           <Search>
             <SearchIconWrapper>

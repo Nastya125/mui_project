@@ -11,7 +11,7 @@ import {
   SingleCharacterPage
 } from "../../pages";
 import SideBar from "../UI/Sidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../UI/Layout";
 
 function App() {
