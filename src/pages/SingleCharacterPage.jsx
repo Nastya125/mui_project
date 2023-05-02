@@ -3,15 +3,6 @@ import { useParams } from "react-router-dom";
 import useService from "../helpers/service";
 import { Stack, CircularProgress, Typography, Button, Paper } from "@mui/material";
 
-
-// birth: character.birth,
-// gender: character.gender,
-// race: character.race,
-// spouse: character.spouse,
-// wikiUrl: character.wikiUrl,
-// id: character._id,
-// name: character.name
-
 function SingleCharacterPage() {
   const [character, setCharacter] = useState(null);
   const { id } = useParams();

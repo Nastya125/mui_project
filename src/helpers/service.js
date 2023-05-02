@@ -19,15 +19,20 @@ const useService = () => {
     return res;
   };
 
+  const getMovieQuote = async (id) => {
+    const res = await request(`${apiBase}/movie/${id}/quote`);
+    return res;
+  };
+
   const getAllCharacter = async (limit, character) => {
-    const options = character ? `?name=${character}` : '';
-    const isLimit = limit ? `?limit=${limit}` : ''
-    const res = await request(`${apiBase}/character${options}?limit=${limit}}`);
+    const options = character ? `?name=${character}` : "";
+    const isLimit = limit ? `?limit=${limit}` : "";
+    const res = await request(`${apiBase}/character${options}${isLimit}`);
     return res.docs.map((character) => {
       return {
         birth: character.birth,
         gender: character.gender,
-        race: character.race ? character.race:"Информация отсутствует",
+        race: character.race ? character.race : "Информация отсутствует",
         spouse: character.spouse,
         wikiUrl: character.wikiUrl,
         id: character._id,
@@ -53,12 +58,12 @@ const useService = () => {
 
   const getQuote = async () => {
     const res = await request(`${apiBase}/quote`);
-    return res
-}
-const getCharacterQuote = async (id) => {
+    return res;
+  };
+  const getCharacterQuote = async (id) => {
     const res = await request(`${apiBase}/character/${id}/quote`);
-    return res
-}
+    return res;
+  };
 
   return {
     loading,

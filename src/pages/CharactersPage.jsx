@@ -25,7 +25,7 @@ function CharacterPage() {
 
   useEffect(() => {
     if (debounceSearchValue) {
-      getAllCharacter(limit, debounceSearchValue).then((res) => {
+      getAllCharacter("", debounceSearchValue).then((res) => {
         setCharacterList(res);
       });
     }
@@ -41,7 +41,13 @@ function CharacterPage() {
   }
 
   return (
-    <div>
+    <Paper 
+    sx={{
+      p:2,
+      margin: "20px 0",
+      justifyContent: "center",
+      backgroundColor: "white"
+    }}>
       <Typography
         variant="h2"
         sx={{
@@ -73,7 +79,7 @@ function CharacterPage() {
       ) : (
         <Loader />
       )}
-    </div>
+    </Paper>
   );
 }
 
@@ -84,30 +90,39 @@ const Content = ({
   setCharacterId,
 }) => {
   return (
-    <div>
-      <ul>
-        {characterList &&
-          characterList.map((character) => {
-            return (
-              <li key={character.id}>
-                <h2 onClick={() => setCharacterId(character.id)}>
-                  <Typography variant="h5">
-                    <Link to={`/${character.id}`}>{character.name}</Link>
-                  </Typography>
-                </h2>
-              </li>
-            );
-          })}
-      </ul>
-      <Button
-        variant="outlined"
-        color="primary"
-        sx={{ margin: "20px auto", display: "block" }}
-        onClick={() => setLimit(limit + 10)}
-      >
-        Показать еще
-      </Button>
-    </div>
+    <>
+      {characterList.length > 0 ? (
+        <>
+          <ul style={{
+            listStyle: "none"
+          }}
+          >
+            {characterList.length > 0 &&
+              characterList.map((character) => {
+                return (
+                  <li key={character.id}>
+                    <h2 onClick={() => setCharacterId(character.id)}>
+                        <Link variant="body2" to={`/${character.id}`}>
+                          {character.name}
+                        </Link>
+                    </h2>
+                  </li>
+                );
+              })}
+          </ul>
+          <Button
+            variant="outlined"
+            color="primary"
+            sx={{ margin: "20px auto", display: "block" }}
+            onClick={() => setLimit(limit + 10)}
+          >
+            Показать еще
+          </Button>
+        </>
+      ) : (
+        <NotFound />
+      )}
+    </>
   );
 };
 
@@ -125,6 +140,31 @@ const Loader = () => {
     >
       <CircularProgress color="inherit" />
     </Stack>
+  );
+};
+
+const NotFound = () => {
+  return (
+    <Paper
+      sx={{
+        p: 2,
+
+        margin: "20px 0",
+        justifyContent: "center",
+        backgroundColor: "#fff",
+      }}
+    >
+      <Typography
+        variant="h2"
+        sx={{
+          textAlign: "center",
+          fontSize: "25px",
+          padding: "10px 0",
+        }}
+      >
+        По данному запросу ничего не найдено
+      </Typography>
+    </Paper>
   );
 };
 
