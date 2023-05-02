@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 import useDebounce from "../helpers/dobounce";
 import { Stack, CircularProgress } from "@mui/material";
 import Paper from "@mui/material/Paper";
+import { LineWeight } from "@mui/icons-material";
 
 function CharacterPage() {
   const [characterList, setCharacterList] = useState([]);
   const [characterId, setCharacterId] = useState(0);
   const [searchValue, setSearchValue] = useState("");
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(20);
   const debounceSearchValue = useDebounce(searchValue, 1000);
   const { getAllCharacter, loading } = useService();
 
@@ -46,7 +47,8 @@ function CharacterPage() {
       p:2,
       margin: "20px 0",
       justifyContent: "center",
-      backgroundColor: "white"
+      backgroundColor: "white",
+      minHeight: "80vh",
     }}>
       <Typography
         variant="h2"
@@ -94,13 +96,17 @@ const Content = ({
       {characterList.length > 0 ? (
         <>
           <ul style={{
-            listStyle: "none"
+            listStyle: "none",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px",
+            padding: "20px"
           }}
           >
             {characterList.length > 0 &&
               characterList.map((character) => {
                 return (
-                  <li key={character.id}>
+                  <li key={character.id} >
                     <h2 onClick={() => setCharacterId(character.id)}>
                         <Link variant="body2" to={`/${character.id}`}>
                           {character.name}
@@ -114,7 +120,7 @@ const Content = ({
             variant="outlined"
             color="primary"
             sx={{ margin: "20px auto", display: "block" }}
-            onClick={() => setLimit(limit + 10)}
+            onClick={() => setLimit(limit + 20)}
           >
             Показать еще
           </Button>
@@ -148,7 +154,6 @@ const NotFound = () => {
     <Paper
       sx={{
         p: 2,
-
         margin: "20px 0",
         justifyContent: "center",
         backgroundColor: "#fff",
