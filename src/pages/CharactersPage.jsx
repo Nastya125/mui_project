@@ -45,10 +45,10 @@ function CharacterPage() {
     <Paper 
     sx={{
       p:2,
-      margin: "20px 0",
+      margin: "40px 0",
       justifyContent: "center",
       backgroundColor: "white",
-      minHeight: "80vh",
+      minHeight: "75vh",
     }}>
       <Typography
         variant="h2"
@@ -76,7 +76,7 @@ function CharacterPage() {
           limit={limit}
           setLimit={setLimit}
           handlerSearch={handlerSearch}
-          setCharacterId={setCharacterId}
+          
         />
       ) : (
         <Loader />
@@ -100,7 +100,8 @@ const Content = ({
             display: "flex",
             flexWrap: "wrap",
             gap: "20px",
-            padding: "20px"
+            padding: "20px",
+            justifyContent: "center"
           }}
           >
             {characterList.length > 0 &&
@@ -108,7 +109,7 @@ const Content = ({
                 return (
                   <li key={character.id} >
                     <h2 onClick={() => setCharacterId(character.id)}>
-                        <Link variant="body2" to={`/${character.id}`}>
+                        <Link variant="body2" to={`/character/${character.id}`}>
                           {character.name}
                         </Link>
                     </h2>

@@ -74,6 +74,7 @@ const useService = () => {
     getAllCharacter,
     getCharacterById,
     getQuote,
+    getMovieQuote,
     getCharacterQuote,
   };
 };

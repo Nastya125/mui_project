@@ -24,6 +24,8 @@ function SingleCharacterPage() {
             sx={{
               fontSize: "34px",
               padding: "10px 0",
+              textShadow: "2px 2px 2px grey",
+
             }}
           >
             {character.name}

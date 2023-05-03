@@ -11,12 +11,12 @@ function SideBar({ open, close }) {
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink to="/product" className="nav-link">
+          <NavLink to="/character" className="nav-link">
             <Typography variant="h5">Персонажи</Typography>
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink to="/catalog" className="nav-link">
+          <NavLink to="/movie" className="nav-link">
             <Typography variant="h5">Фильмы</Typography>
           </NavLink>
         </ListItem>
