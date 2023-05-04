@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import useDebounce from "../helpers/dobounce";
 import { Stack, CircularProgress } from "@mui/material";
 import Paper from "@mui/material/Paper";
+import { useSelector, useDispatch } from "react-redux";
 
 function CharacterPage() {
   const [characterList, setCharacterList] = useState([]);
@@ -16,6 +17,7 @@ function CharacterPage() {
   const [limit, setLimit] = useState(20);
   const debounceSearchValue = useDebounce(searchValue, 1000);
   const { getAllCharacter, loading } = useService();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllCharacter(limit).then((res) => {
@@ -35,6 +37,12 @@ function CharacterPage() {
       });
     }
   }, [debounceSearchValue]);
+
+ 
+  dispatch({
+    type: "SET_TITLE",
+    payload: "Персонажи",
+  });
 
   function handlerSearch(event) {
     setSearchValue(event.target.value);

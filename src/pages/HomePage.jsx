@@ -1,6 +1,14 @@
 import { Paper, Typography } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
 
 function HomePage() {
+  const dispatch = useDispatch();
+
+  dispatch({
+    type: "SET_TITLE",
+    payload: "Главная страница",
+  });
+
   return (
     <Paper
       sx={{

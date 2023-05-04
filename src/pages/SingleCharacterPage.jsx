@@ -8,7 +8,7 @@ function SingleCharacterPage() {
   const [character, setCharacter] = useState(null);
   const { id } = useParams();
   const { getCharacterById } = useService();
-  const characters = useSelector((state) => state.characters);
+  const characters = useSelector((state) => state.character);
 
   const dispatch = useDispatch();
 
@@ -20,13 +20,13 @@ function SingleCharacterPage() {
   }, [id]);
 
   useEffect(() => {
-    if (!characters) return; 
+    if (!character) return; 
       dispatch({
-        type: "SET_CHARACTERS",
-        payload: characters.name,
+        type: "SET_TITLE",
+        payload: character.name,
       });
     
-  }, [characters]);
+  }, [character]);
 
   return (
     <div>

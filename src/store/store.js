@@ -1,5 +1,7 @@
 import { createStore } from "redux";
 
+
+
 const initialState = {
     title: 'The Lord of the Rings',
     characters: [],
@@ -7,12 +9,8 @@ const initialState = {
   
   const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_CHARACTERS':
-            return {
-                ...state,
-                characters: action.payload
-            }
         case 'SET_TITLE':
+            document.title = action.payload
             return {
                 ...state,
                 title: action.payload
