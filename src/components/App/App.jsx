@@ -14,8 +14,12 @@ import SideBar from "../UI/Sidebar";
 import { useState, useEffect } from "react";
 import Layout from "../UI/Layout";
 
+
+
 function App() {
   const [openSideBar, setOpenSideBar] = useState(false);
+
+
   function openSidebar() {
     setOpenSideBar(true);
   }

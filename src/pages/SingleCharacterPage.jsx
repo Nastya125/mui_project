@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useService from "../helpers/service";
 import { Stack, CircularProgress, Typography, Button, Paper } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
 
 function SingleCharacterPage() {
   const [character, setCharacter] = useState(null);
   const { id } = useParams();
   const { getCharacterById } = useService();
+  const characters = useSelector((state) => state.characters);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (id === 0) return;
@@ -14,6 +18,15 @@ function SingleCharacterPage() {
       setCharacter(res);
     });
   }, [id]);
+
+  useEffect(() => {
+    if (!characters) return; 
+      dispatch({
+        type: "SET_CHARACTERS",
+        payload: characters.name,
+      });
+    
+  }, [characters]);
 
   return (
     <div>

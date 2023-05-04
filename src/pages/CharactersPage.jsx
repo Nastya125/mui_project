@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import useDebounce from "../helpers/dobounce";
 import { Stack, CircularProgress } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { LineWeight } from "@mui/icons-material";
 
 function CharacterPage() {
   const [characterList, setCharacterList] = useState([]);
@@ -108,7 +107,7 @@ const Content = ({
               characterList.map((character) => {
                 return (
                   <li key={character.id} >
-                    <h2 onClick={() => setCharacterId(character.id)}>
+                    <h2 >
                         <Link variant="body2" to={`/character/${character.id}`}>
                           {character.name}
                         </Link>
@@ -175,3 +174,4 @@ const NotFound = () => {
 };
 
 export default CharacterPage;
+

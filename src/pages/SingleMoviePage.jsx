@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useService from "../helpers/service";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Stack,
   CircularProgress,
@@ -13,6 +14,10 @@ function SingleMoviePage() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [quote, setQuote] = useState(null);
+  const title = useSelector((state) => state.title);
+
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (id === 0) return;
@@ -25,9 +30,13 @@ function SingleMoviePage() {
   }, [id]);
 
   useEffect(() => {
-    if (!quote) return;
-
-  }, [quote]);
+    if (!movie) return; 
+      dispatch({
+        type: "SET_TITLE",
+        payload: movie.name,
+      });
+    
+  }, [movie]);
 
   return (
     <div>
