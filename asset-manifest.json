@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/mui_project/static/css/main.85aefef5.css",
+    "main.js": "/mui_project/static/js/main.e673c763.js",
+    "static/media/films.jpeg": "/mui_project/static/media/films.35521b0434ff4ee58afd.jpeg",
+    "static/media/map.jpg": "/mui_project/static/media/map.2815b33103fe9ff3c676.jpg",
+    "static/media/home.jpg": "/mui_project/static/media/home.5c9e545271f636ff321b.jpg",
+    "index.html": "/mui_project/index.html",
+    "main.85aefef5.css.map": "/mui_project/static/css/main.85aefef5.css.map",
+    "main.e673c763.js.map": "/mui_project/static/js/main.e673c763.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.85aefef5.css",
+    "static/js/main.e673c763.js"
+  ]
+}
