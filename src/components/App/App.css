@@ -18,3 +18,8 @@
   z-index: -1;
   background-image: url("./img/map.jpg");
 }
+
+.img-home {
+  width: 600px;
+  align-items: center;
+}

@@ -1,13 +1,24 @@
 import { Paper, Typography } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import homeImg from "../components/App/img/home.jpg";
+import ModalNotification from "../modals";
+import { useEffect, useState } from "react";
 
 function HomePage() {
   const dispatch = useDispatch();
 
-  dispatch({
-    type: "SET_TITLE",
-    payload: "Главная страница",
-  });
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    dispatch({
+      type: "SET_TITLE",
+      payload: "Вселенная Властелина Колец",
+    });
+
+    setTimeout(() => {
+      setOpen(true);
+    }, 3000);
+  }, []);
 
   return (
     <Paper
@@ -15,6 +26,8 @@ function HomePage() {
         p: 2,
         margin: "40px 0",
         justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
         backgroundColor: "white",
         minHeight: "75vh",
       }}
@@ -22,18 +35,17 @@ function HomePage() {
       <Typography
         variant="h2"
         sx={{
-          textAlign: "center",
           fontSize: "34px",
           padding: "20px 0",
         }}
       >
         Добро пожаловать во вселенную "Властелин колец"
       </Typography>
+      <img className="img-home" src={homeImg} alt="Home image" />
 
       <Typography
         variant="body2"
         sx={{
-          textAlign: "center",
           fontSize: "22px",
           margin: "40px 20px",
         }}
@@ -44,8 +56,15 @@ function HomePage() {
         присутствия — все это притягивает многочисленных поклонников фильмов,
         книг и сериалов.
       </Typography>
+      <ModalNotification isOpen={open} />
     </Paper>
   );
+}
+
+{
+  /* <Button variant="outlined" onClick={handleClickOpen}>
+Open form dialog
+</Button> */
 }
 
 export default HomePage;

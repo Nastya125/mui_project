@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useService from "../helpers/service";
 import { Stack, CircularProgress, Typography, Button, Paper } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function SingleCharacterPage() {
   const [character, setCharacter] = useState(null);
   const { id } = useParams();
   const { getCharacterById } = useService();
-  const characters = useSelector((state) => state.character);
+  // const characters = useSelector((state) => state.character);
 
   const dispatch = useDispatch();
 
@@ -60,8 +60,8 @@ function SingleCharacterPage() {
             }}
           >
             <li>Имя персонажа: {character.name}</li>
-            <li>Дата рождения: {character.birth}</li>
-            <li>Дата смерти: {character.death}</li>
+            <li>Дата рождения: {character.birth ? character.birth : "Не указано"}</li>
+            <li>Дата смерти: {character.death ? character.death : "Не указано"}</li>
             <li>Пол: {character.gender}</li>
             <li>Раса: {character.race}</li>
             <li>Никнейм: {character.spouse}</li>
